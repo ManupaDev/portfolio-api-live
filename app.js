@@ -75,7 +75,7 @@ app.post("/api/projects", (request, response) => {
 
 mongoose
   .connect(
-    ""
+    "mongodb+srv://manupadev:ae7SeksVmwI2k54X@portfolio-api-db.xstzleu.mongodb.net/portfolio-api-db?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("DB connections successful");
