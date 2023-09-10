@@ -7,7 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 const projects = [
   {
     id: 1,
@@ -72,7 +71,8 @@ app.get("/api/projects", async (request, response) => {
 
 app.post("/api/projects", async (request, response) => {
   const newProject = request.body;
-  response.status(201).send();
+  const createdProject = await Project.create(newProject);
+  response.status(201).send(createdProject);
 });
 
 mongoose
