@@ -1,6 +1,7 @@
 import express from "express";
 
 const app = express();
+app.use(express.json());
 
 const projects = [
   {
@@ -61,6 +62,12 @@ const projects = [
 
 app.get("/api/projects", (request, response) => {
   response.status(200).json(projects);
+});
+
+app.post("/api/projects", (request, response) => {
+  const newProject = request.body;
+  projects.push(newProject);
+  response.status(201).send();
 });
 
 app.listen(8000, () => {
