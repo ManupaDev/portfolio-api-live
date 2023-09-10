@@ -72,6 +72,17 @@ app.post("/api/projects", (request, response) => {
   response.status(201).send();
 });
 
+mongoose
+  .connect(
+    ""
+  )
+  .then(() => {
+    console.log("DB connections successful");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 app.listen(8000, () => {
   console.log("Web service is listening on port 8000 to requests.");
 });
