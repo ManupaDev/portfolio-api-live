@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import Project from "./models/Project.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
 
 const projects = [
   {
@@ -63,13 +65,13 @@ const projects = [
   },
 ];
 
-app.get("/api/projects", (request, response) => {
+app.get("/api/projects", async (request, response) => {
+  const projects = await Project.find();
   response.status(200).json(projects);
 });
 
-app.post("/api/projects", (request, response) => {
+app.post("/api/projects", async (request, response) => {
   const newProject = request.body;
-  projects.push(newProject);
   response.status(201).send();
 });
 
